@@ -63,4 +63,26 @@ export class CoffeeService {
       })
     })
   }
+
+  async getBasicDetails(batchNo, currentAccount) {
+    await this.initWeb3();
+    const that = this;
+    return new Promise((resolve, reject) => {
+      that.contract.methods.getBasicDetails(batchNo).call({from: currentAccount})
+      .then(function(result) {
+        return resolve(result);
+      })
+    })
+  }
+
+  async getFarmInspectorData(batchNo, currentAccount) {
+    await this.initWeb3();
+    const that = this;
+    return new Promise((resolve, reject) => {
+      that.contract.methods.getFarmInspectorData(batchNo).call({from: currentAccount})
+      .then(function(result) {
+        return resolve(result);
+      })
+    })
+  }
 }

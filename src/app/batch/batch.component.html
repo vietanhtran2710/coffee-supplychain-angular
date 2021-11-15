@@ -1,8 +1,9 @@
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <div class="container-fluid">
         <div class="row bg-title">
             <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
                 <h3 class="page-title">Batch Progress <a href="javascript:void(0);" onclick="javascript:window.print();" class="text-info" title="Print Page Report"><i class="fa fa-print"></i> Print</a></h3> 
-                <h4><b>Batch No: </b>batchNo</h4>
+                <h4><b>Batch No: </b>{{batchNo}}</h4>
             </div>
             <div class="col-lg-6 col-sm-8 col-md-8 col-xs-12">
 
@@ -15,8 +16,8 @@
                 <div class="white-box">
                     <ul class="timeline">
                         <li>
-                            <div class="timeline-badge danger">
-                                <i class="fa fa-check"></i>
+                            <div [ngClass]="batchStage >= 0 ? 'timeline-badge success' : 'timeline-badge danger'">
+                                <i [ngClass]="batchStage >= 0 ? 'fa fa-check' : 'fa fa-times'"></i>
                             </div>
                             <div class="timeline-panel" id="cultivationSection">
                                 <div class="timeline-heading">
@@ -26,16 +27,38 @@
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table activityData table-responsive" >
-                                        <tr>
+                                        <tr *ngIf="batchStage < 0">
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
+                                        <div *ngIf="batchStage >= 0">
+                                            <tr>
+                                                <td><b>Farmer Name: </b></td>
+                                                <td>{{basicDetail.farmerName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Farm Address: </b></td>
+                                                <td>{{basicDetail.farmerAddress}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Exporter Name: </b></td>
+                                                <td>{{basicDetail.exporterName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Importer Name: </b></td>
+                                                <td>{{basicDetail.importerName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Registration No: </b></td>
+                                                <td>{{basicDetail.regisNo}}</td>
+                                            </tr>
+                                        </div>
                                     </table>
                                 </div>
                             </div>
                         </li>
                         <li class="timeline-inverted">
-                            <div class="timeline-badge danger">
-                                <i class="fa fa-times"></i>
+                            <div [ngClass]="batchStage >= 1 ? 'timeline-badge success' : 'timeline-badge danger'">
+                                <i [ngClass]="batchStage >= 1 ? 'fa fa-check' : 'fa fa-times'"></i>
                             </div>
                             <div class="timeline-panel" id="farmInspectionSection">
                                 <div class="timeline-heading">
@@ -45,16 +68,30 @@
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table activityData table-responsive">
-                                        <tr>
+                                        <tr *ngIf="batchStage < 1">
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
+                                        <div *ngIf="batchStage >= 0">
+                                            <tr>
+                                                <td><b>Coffee Family: </b></td>
+                                                <td>{{farmInspectorData.family}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Fertilizer Used: </b></td>
+                                                <td>{{farmInspectorData.fert}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Type Of Seed: </b></td>
+                                                <td>{{farmInspectorData.seed}}</td>
+                                            </tr>
+                                        </div>
                                     </table>
                                 </div>
                             </div>
                         </li>
                         <li>
-                           <div class="timeline-badge danger">
-                                <i class="fa fa-times"></i>
+                           <div [ngClass]="batchStage >= 2 ? 'timeline-badge success' : 'timeline-badge danger'">
+                                <i [ngClass]="batchStage >= 2 ? 'fa fa-check' : 'fa fa-times'"></i>
                             </div>
                             <div class="timeline-panel" id="harvesterSection">
                                 <div class="timeline-heading">
@@ -64,7 +101,7 @@
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table activityData table-responsive" >
-                                        <tr>
+                                        <tr *ngIf="batchStage < 2"> 
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
                                     </table>        
@@ -72,8 +109,8 @@
                             </div>
                         </li>
                         <li class="timeline-inverted">
-                            <div class="timeline-badge danger">
-                                <i class="fa fa-times"></i>
+                            <div [ngClass]="batchStage >= 3 ? 'timeline-badge success' : 'timeline-badge danger'">
+                                <i [ngClass]="batchStage >= 3 ? 'fa fa-check' : 'fa fa-times'"></i>
                             </div>
                             <div class="timeline-panel" id="exporterSection"> 
                                 <div class="timeline-heading">
@@ -83,7 +120,7 @@
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table activityData table-responsive">
-                                        <tr>
+                                        <tr *ngIf="batchStage < 3">
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
                                     </table>  
@@ -91,8 +128,8 @@
                             </div>
                         </li>
                         <li>
-                            <div class="timeline-badge danger">
-                                <i class="fa fa-times"></i>
+                            <div [ngClass]="batchStage >= 4 ? 'timeline-badge success' : 'timeline-badge danger'">
+                                <i [ngClass]="batchStage >= 4 ? 'fa fa-check' : 'fa fa-times'"></i>
                             </div>
                             <div class="timeline-panel" id="importerSection">
                                 <div class="timeline-heading">
@@ -102,7 +139,7 @@
                                 </div>
                                 <div class="timeline-body">
                                    <table class="table activityData table-responsive" >
-                                        <tr>
+                                        <tr *ngIf="batchStage < 4">
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
                                     </table>
@@ -110,8 +147,8 @@
                             </div>
                         </li>
                         <li class="timeline-inverted">
-                            <div class="timeline-badge danger">
-                                <i class="fa fa-times"></i>
+                            <div [ngClass]="batchStage >= 5 ? 'timeline-badge success' : 'timeline-badge danger'">
+                                <i [ngClass]="batchStage >= 5 ? 'fa fa-check' : 'fa fa-times'"></i>
                             </div>
                             <div class="timeline-panel" id="processorSection">
                                 <div class="timeline-heading">
@@ -121,7 +158,7 @@
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table activityData table-responsive" >
-                                        <tr>
+                                        <tr *ngIf="batchStage < 5">
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
                                     </table>
@@ -175,33 +212,6 @@
                         <li><a href="javascript:void(0)" theme="blue-dark" class="blue-dark-theme">10</a></li>
                         <li><a href="javascript:void(0)" theme="purple-dark" class="purple-dark-theme">11</a></li>
                         <li><a href="javascript:void(0)" theme="megna-dark" class="megna-dark-theme">12</a></li>
-                    </ul>
-                    <ul class="m-t-20 chatonline">
-                        <li><b>Chat option</b></li>
-                        <li>
-                            <a href="javascript:void(0)"><img src="plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)"><img src="plugins/images/users/genu.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)"><img src="plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)"><img src="plugins/images/users/arijit.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)"><img src="plugins/images/users/govinda.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)"><img src="plugins/images/users/hritik.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)"><img src="plugins/images/users/john.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)"><img src="plugins/images/users/pawandeep.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
-                        </li>
                     </ul>
                 </div>
             </div>
