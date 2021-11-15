@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  adminAddress: '0xefc2b897ebd05776bf1fcb1577dc65141c5e2831'
+  adminAddress: '0xefc2b897ebd05776bf1fcb1577dc65141c5e2831',
+  coffeeSupplyChainAddress: '0xCb775A7F41A0952910605DE5aEC2dDc87b85c88A',
+  supplyChainStorageAddress: '0xA8A12bB1b122E2BA65C52B267009e816f5527E6A',
+  supplyChainUserAddress: '0x0bBb1347f2BA1f0b28a0dCA3C4Dfa94CB0C92B11',
 };
 
 /*
