@@ -53,4 +53,14 @@ export class CoffeeService {
       })
     })
   }
+
+  async updateFarmInspectorData(batchNo, family, seed, fert, currentAccount) {
+    const that = this;
+    return new Promise((resolve, reject) => {
+      that.contract.methods.updateFarmInspectorData(batchNo, family, seed, fert).send({from: currentAccount})
+      .then(function(result) {
+        return resolve(result);
+      })
+    })
+  }
 }

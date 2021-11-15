@@ -21,6 +21,46 @@ export class UserComponent implements OnInit {
   batchInfo = []
   currentAddress: ''
   stageMap
+  currentBatch: ''
+
+  farmForm = {
+    seedType: '',
+    family: '',
+    fert: '',
+  }
+
+  harvesterForm = {
+    variety: '',
+    temperature: '',
+    humidity: '',
+  }
+
+  exporterForm = {
+    quantity: 0,
+    destination: '',
+    shipName: '',
+    shipNo: '',
+    dateTime: 0,
+    exporterID: 0,
+  }
+
+  importerForm = {
+    quantity: 0,
+    transportInfo: '',
+    warehouseName: '',
+    warehouseAddress: '',
+    importerID: 0 
+  }
+
+  processingForm = {
+    quantity: 0,
+    temperature: '',
+    roastingTime: 0,
+    internalNo: '',
+    dateTime: 0,
+    processorName: '',
+    processAddress: ''
+  }
 
   constructor(private router: Router,
               private userService: UserService,
@@ -50,6 +90,7 @@ export class UserComponent implements OnInit {
       for (let item of (result as any)) {
         that.coffeeService.getBatchStatus(item.returnValues.batchNo, that.currentAddress)
         .then(function (result) {
+          console.log(result);
           let batch = {
             no: item.returnValues.batchNo,
             stage: that.stageMap.get(result)
@@ -65,6 +106,56 @@ export class UserComponent implements OnInit {
       const currentUser = Moralis.User.current();
       this.router.navigate([``])
     });
+  }
+
+  editingCurrentBatch(batchNo) {
+    this.currentBatch = batchNo;
+  }
+
+  clearFarmForm() {
+    this.farmForm.family = '';
+    this.farmForm.fert = '';
+    this.farmForm.seedType = '';
+  }
+
+  clearHarvesterForm() {
+    this.harvesterForm.humidity = '';
+    this.harvesterForm.temperature = '';
+    this.harvesterForm.variety = '';
+  }
+
+  clearExporterForm() {
+    this.exporterForm.dateTime = 0;
+    this.exporterForm.destination = '';
+    this.exporterForm.exporterID = 0;
+    this.exporterForm.quantity = 0;
+    this.exporterForm.shipName = '';
+    this.exporterForm.shipNo = '';
+  }
+
+  clearImporterForm() {
+    this.importerForm.importerID = 0;
+    this.importerForm.quantity = 0;
+    this.importerForm.transportInfo = '';
+    this.importerForm.warehouseAddress = '';
+    this.importerForm.warehouseName = '';
+  }
+
+  clearProcessingForm() {
+    this.processingForm.dateTime = 0;
+    this.processingForm.internalNo = '';
+    this.processingForm.processAddress = '';
+    this.processingForm.processorName = '';
+    this.processingForm.quantity = 0;
+    this.processingForm.roastingTime = 0;
+    this.processingForm.temperature = '';
+  }
+
+  updateFarmInspectorDetails() {
+    this.coffeeService.updateFarmInspectorData(this.currentBatch, this.farmForm.family, this.farmForm.seedType, this.farmForm.fert, this.currentAddress)
+    .then(function (result) {
+      console.log(result);
+    })
   }
 
 }

@@ -70,41 +70,47 @@
                                 </tr>
                                 <tr *ngFor="let item of batchInfo">
                                     <td>{{item.no}}</td>
-                                    <td *ngIf="item.stage == 0 && item.stage == stageMap.get(userInfo.role)">
-                                        <a onclick="javascript:$('#userFormModel').modal();" class="popup-with-form">
-                                          <span class="white label label-inverse font-weight-100">Update</span>
-                                        </a>
-                                    </td>
-                                    <td *ngIf="item.stage == 1 && item.stage == stageMap.get(userInfo.role)">
-                                        <a onclick="javascript:$('#userFormModel').modal();" class="popup-with-form">
-                                          <span class="white label label-inverse font-weight-100">Update</span>
-                                        </a>
-                                    </td>
-                                    <td *ngIf="item.stage == 2 && item.stage == stageMap.get(userInfo.role)">
-                                        <a onclick="javascript:$('#userFormModel').modal();" class="popup-with-form">
-                                          <span class="white label label-inverse font-weight-100">Update</span>
-                                        </a>
-                                    </td>
-                                    <td *ngIf="item.stage == 3 && item.stage == stageMap.get(userInfo.role)">
-                                        <a onclick="javascript:$('#userFormModel').modal();" class="popup-with-form">
-                                          <span class="white label label-inverse font-weight-100">Update</span>
-                                        </a>
-                                    </td>
-                                    <td *ngIf="item.stage == 4 && item.stage == stageMap.get(userInfo.role)">
-                                        <a onclick="javascript:$('#userFormModel').modal();" class="popup-with-form">
-                                          <span class="white label label-inverse font-weight-100">Update</span>
-                                        </a>
-                                    </td>
-                                    <td *ngIf="item.stage == 0 && item.stage != stageMap.get(userInfo.role)"><span class="white label label-warning font-weight-100">Processing</span> </td>
-                                    <td *ngIf="item.stage == 1 && item.stage != stageMap.get(userInfo.role)"><span class="white label label-warning font-weight-100">Processing</span> </td>
-                                    <td *ngIf="item.stage == 2 && item.stage != stageMap.get(userInfo.role)"><span class="white label label-warning font-weight-100">Processing</span> </td>
-                                    <td *ngIf="item.stage == 3 && item.stage != stageMap.get(userInfo.role)"><span class="white label label-warning font-weight-100">Processing</span> </td>
-                                    <td *ngIf="item.stage == 4 && item.stage != stageMap.get(userInfo.role)"><span class="white label label-warning font-weight-100">Processing</span> </td>
+
                                     <td *ngIf="item.stage > 0;else not0"><span class="white label label-success font-weight-100">Completed</span></td>
+                                    <td *ngIf="item.stage == 0 && item.stage != stageMap.get(userInfo.role)"><span class="white label label-warning font-weight-100">Processing</span> </td>
+                                    <td *ngIf="item.stage == 0 && item.stage == stageMap.get(userInfo.role)">
+                                        <a onclick="javascript:$('#userFormModel').modal();" (click)="editingCurrentBatch(item.no)" class="popup-with-form">
+                                          <span class="white label label-inverse font-weight-100">Update</span>
+                                        </a>
+                                    </td>
+
                                     <td *ngIf="item.stage > 1;else not1"><span class="white label label-success font-weight-100">Completed</span></td>
+                                    <td *ngIf="item.stage == 1 && item.stage != stageMap.get(userInfo.role)"><span class="white label label-warning font-weight-100">Processing</span> </td>
+                                    <td *ngIf="item.stage == 1 && item.stage == stageMap.get(userInfo.role)">
+                                        <a onclick="javascript:$('#userFormModel').modal();" (click)="editingCurrentBatch(item.no)" class="popup-with-form">
+                                          <span class="white label label-inverse font-weight-100">Update</span>
+                                        </a>
+                                    </td>
+
                                     <td *ngIf="item.stage > 2;else not2"><span class="white label label-success font-weight-100">Completed</span></td>
+                                    <td *ngIf="item.stage == 2 && item.stage != stageMap.get(userInfo.role)"><span class="white label label-warning font-weight-100">Processing</span> </td>
+                                    <td *ngIf="item.stage == 2 && item.stage == stageMap.get(userInfo.role)">
+                                        <a onclick="javascript:$('#userFormModel').modal();" (click)="editingCurrentBatch(item.no)" class="popup-with-form">
+                                          <span class="white label label-inverse font-weight-100">Update</span>
+                                        </a>
+                                    </td>
+
                                     <td *ngIf="item.stage > 3;else not3"><span class="white label label-success font-weight-100">Completed</span></td>
+                                    <td *ngIf="item.stage == 3 && item.stage != stageMap.get(userInfo.role)"><span class="white label label-warning font-weight-100">Processing</span> </td>
+                                    <td *ngIf="item.stage == 3 && item.stage == stageMap.get(userInfo.role)">
+                                        <a onclick="javascript:$('#userFormModel').modal();" (click)="editingCurrentBatch(item.no)" class="popup-with-form">
+                                          <span class="white label label-inverse font-weight-100">Update</span>
+                                        </a>
+                                    </td>
+
                                     <td *ngIf="item.stage > 4;else not4"><span class="white label label-success font-weight-100">Completed</span></td>
+                                    <td *ngIf="item.stage == 4 && item.stage != stageMap.get(userInfo.role)"><span class="white label label-warning font-weight-100">Processing</span> </td>
+                                    <td *ngIf="item.stage == 4 && item.stage == stageMap.get(userInfo.role)">
+                                        <a onclick="javascript:$('#userFormModel').modal();" (click)="editingCurrentBatch(item.no)" class="popup-with-form">
+                                          <span class="white label label-inverse font-weight-100">Update</span>
+                                        </a>
+                                    </td>
+
                                     <ng-template #not0><td *ngIf="item.stage != 0"><span class="white label label-danger font-weight-100">Not Available</span></td></ng-template>
                                     <ng-template #not1><td *ngIf="item.stage != 1"><span class="white label label-danger font-weight-100">Not Available</span></td></ng-template>
                                     <ng-template #not2><td *ngIf="item.stage != 2"><span class="white label label-danger font-weight-100">Not Available</span></td></ng-template>
@@ -136,66 +142,78 @@
                 <div *ngIf="stageMap.get(userInfo.role) == 0" class="farm-inspection">
                     <div class="form-group">
                         <label class="control-label" for="typeOfSeed">Type of Seed</label>
-                        <input type="text" class="form-control" id="typeOfSeed" name="typeOfSeed" placeholder="type of seed" data-parsley-required="true">
+                        <input type="text" class="form-control" id="typeOfSeed" name="typeOfSeed" placeholder="type of seed" data-parsley-required="true"
+                        [(ngModel)]="farmForm.seedType" #seedType="ngModel">
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="coffeeFamily">Coffee Family</label>
-                        <input type="text" class="form-control" id="coffeeFamily" name="coffeeFamily" placeholder="coffee family" data-parsley-required="true">
+                        <input type="text" class="form-control" id="coffeeFamily" name="coffeeFamily" placeholder="coffee family" data-parsley-required="true"
+                        [(ngModel)]="farmForm.family" #family="ngModel">
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="fertilizer">Fertilizer Used</label>
-                        <input type="text" class="form-control" id="fertilizerUsed" name="fertilizer" placeholder="fertilizer used" data-parsley-required="true">
+                        <input type="text" class="form-control" id="fertilizerUsed" name="fertilizer" placeholder="fertilizer used" data-parsley-required="true"
+                        [(ngModel)]="farmForm.fert" #fert="ngModel">
                     </div>
                         <div class="form-group float-right">
-                        <button type="reset" class="btn btn-default waves-effect" >Reset</button>
-                        <button type="button" id="updateFarmInspection" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-default waves-effect" (click)="clearFarmForm()">Reset</button>
+                        <button type="button" id="updateFarmInspection" class="btn btn-primary" (click)="updateFarmInspectorDetails()">Submit</button>
                     </div>
                 </div>
                 <div *ngIf="stageMap.get(userInfo.role) == 1" class="harvester">
                     <div class="form-group">
                         <label class="control-label" for="cropVariety">Coffee Variety</label>
-                        <input type="text" class="form-control" id="cropVariety" name="cropVariety" placeholder="coffee variety" data-parsley-required="true">
+                        <input type="text" class="form-control" id="cropVariety" name="cropVariety" placeholder="coffee variety" data-parsley-required="true"
+                        [(ngModel)]="harvesterForm.variety" #variety="ngModel">
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="temperatureUsed">Temperature (in Fahrenheit)</label>
-                        <input type="text" class="form-control" id="temperatureUsed" name="temperatureUsed" placeholder="temperature" data-parsley-required="true">
+                        <input type="text" class="form-control" id="temperatureUsed" name="temperatureUsed" placeholder="temperature" data-parsley-required="true"
+                        [(ngModel)]="harversterForm.temperature" #temperature="ngModel">
                     </div>
                         <div class="form-group">
                         <label class="control-label" for="humidity">Humidity</label>
-                        <input type="text" class="form-control" id="humidity" name="humidity" placeholder="humidity" data-parsley-required="true">
+                        <input type="text" class="form-control" id="humidity" name="humidity" placeholder="humidity" data-parsley-required="true"
+                        [(ngModel)]="harvesterForm.humidity" #humidity="ngModel">
                     </div>                                
                     <div class="form-group float-right">
-                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
-                        <button type="button" id="updateHarvest"class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-default waves-effect" (click)="clearHarvesterForm()">Reset</button>
+                        <button type="button" id="updateHarvest"class="btn btn-primary" >Submit</button>
                     </div>
                 </div>
                 <div *ngIf="stageMap.get(userInfo.role) == 2" class="exporter">
                     <div class="form-group">
                         <label class="control-label" for="quantity">Quantity (in Kg)</label>
-                        <input type="number" min="1" class="form-control" id="quantity" name="quantity" placeholder="Quantity" data-parsley-required="true">
+                        <input type="number" min="1" class="form-control" id="quantity" name="quantity" placeholder="Quantity" data-parsley-required="true"
+                        [(ngModel)]="exporterForm.quantity" #exporterQuantity="ngModel">
                     </div> 
                     <div class="form-group">
                         <label class="control-label" for="destinationAddress">Destination Address</label>
-                        <input type="text" class="form-control" id="destinationAddress" name="destinationAddress" placeholder="Destination Address" data-parsley-required="true">
+                        <input type="text" class="form-control" id="destinationAddress" name="destinationAddress" placeholder="Destination Address" data-parsley-required="true"
+                        [(ngModel)]="exporterForm.destination" #destination="ngModel">
                     </div> 
                     <div class="form-group">
                         <label class="control-label" for="shipName">Ship Name</label>
-                        <input type="text" class="form-control" id="shipName" name="shipName" placeholder="Ship Name" data-parsley-required="true">
+                        <input type="text" class="form-control" id="shipName" name="shipName" placeholder="Ship Name" data-parsley-required="true"
+                        [(ngModel)]="exporterForm.shipName" #shipName="ngModel">
                     </div> 
                     <div class="form-group">
                         <label class="control-label" for="shipNo">Ship No</label>
-                        <input type="text" class="form-control" id="shipNo" name="shipNo" placeholder="Ship No" data-parsley-required="true">
+                        <input type="text" class="form-control" id="shipNo" name="shipNo" placeholder="Ship No" data-parsley-required="true"
+                        [(ngModel)]="exporterForm.shipNo" #shipNo="ngModel">
                     </div> 
                     <div class="form-group">
                         <label class="control-label" for="estimateDateTime">Estimate Datetime</label>
-                        <input type="text" class="form-control datepicker-master" id="estimateDateTime" name="estimateDateTime" placeholder="Estimate Datetime" data-parsley-required="true">
+                        <input type="text" class="form-control datepicker-master" id="estimateDateTime" name="estimateDateTime" placeholder="Estimate Datetime" data-parsley-required="true"
+                        [(ngModel)]="exporterForm.dateTime" #dateTime="ngModel">
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="exporterId">Exporter ID</label>
-                        <input type="number" class="form-control" id="exporterId" name="exporterId" placeholder="Exporter ID" data-parsley-required="true">
+                        <input type="number" class="form-control" id="exporterId" name="exporterId" placeholder="Exporter ID" data-parsley-required="true"
+                        [(ngModel)]="exporterForm.exporterID" #exporterId="ngModel">
                     </div>
                     <div class="form-group float-right">
-                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
+                        <button type="reset" class="btn btn-default waves-effect" (click)="clearExporterForm">Reset</button>
                         <button type="button" id="updateExport" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
@@ -233,7 +251,7 @@
                     </div>                              
                     
                         <div class="form-group float-right">
-                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
+                        <button type="reset" class="btn btn-default waves-effect" (click)="clearImporterForm()">Reset</button>
                         <button type="button" id="updateImport"class="btn btn-primary">Submit</button>
                     </div>
                 </div>
@@ -269,7 +287,7 @@
                         <input type="text" class="form-control" id="processorAddress" name="processorAddress" placeholder="Processor Address" data-parsley-required="true">
                     </div>
                         <div class="form-group float-right">
-                        <button type="reset" class="btn btn-default waves-effect">Reset</button>
+                        <button type="reset" class="btn btn-default waves-effect" (click)="clearProcessingForm()">Reset</button>
                         <button type="button" id="updateProcessor"class="btn btn-primary">Submit</button>
                     </div>
                 </div>
