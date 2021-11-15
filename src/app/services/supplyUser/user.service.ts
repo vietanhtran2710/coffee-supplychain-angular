@@ -26,7 +26,7 @@ export class UserService {
     await this.initWeb3();
     const that = this;
     return new Promise((resolve, reject) => {
-      that.contract.getPastEvents('UserUpdate')
+      that.contract.getPastEvents('UserUpdate', {fromBlock: 0})
       .then(function(result) {
         return resolve(result);
       })
