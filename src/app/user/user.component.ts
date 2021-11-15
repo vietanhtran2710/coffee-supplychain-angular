@@ -158,4 +158,8 @@ export class UserComponent implements OnInit {
     })
   }
 
+  viewBatch(batchNo) {
+    this.router.navigateByUrl(`/batch/${batchNo}`);
+  }
+
 }
