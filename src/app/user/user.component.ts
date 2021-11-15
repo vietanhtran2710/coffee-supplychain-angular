@@ -3,6 +3,7 @@ import Moralis from 'moralis';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../services/supplyUser/user.service';
 import { CoffeeService } from '../services/coffeeSupply/coffee.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user',
@@ -155,6 +156,13 @@ export class UserComponent implements OnInit {
     this.coffeeService.updateFarmInspectorData(this.currentBatch, this.farmForm.family, this.farmForm.seedType, this.farmForm.fert, this.currentAddress)
     .then(function (result) {
       console.log(result);
+      if (result) {
+        Swal.fire(
+          'Update farm inspector data successfully!',
+          `Transaction: ${(result as any).transactionHash}`,
+          'success'
+        )
+      }
     })
   }
 
@@ -162,6 +170,13 @@ export class UserComponent implements OnInit {
     this.coffeeService.updateHarvesterData(this.currentBatch, this.harvesterForm.variety, this.harvesterForm.temperature, this.harvesterForm.humidity, this.currentAddress)
     .then(function (result) {
       console.log(result);
+      if (result) {
+        Swal.fire(
+          'Update harvester data successfully!',
+          `Transaction: ${(result as any).transactionHash}`,
+          'success'
+        )
+      }
     })
   }
 
@@ -180,6 +195,13 @@ export class UserComponent implements OnInit {
       this.currentAddress)
     .then(function (result) {
       console.log(result);
+      if (result) {
+        Swal.fire(
+          'Update exporter data successfully!',
+          `Transaction: ${(result as any).transactionHash}`,
+          'success'
+        )
+      }
     })
   }
 

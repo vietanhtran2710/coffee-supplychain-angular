@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../services/supplyUser/user.service';
 import { CoffeeService } from '../services/coffeeSupply/coffee.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin',
@@ -101,6 +102,13 @@ export class AdminComponent implements OnInit {
     this.userService.createUser(this.userForm.address, this.userForm.name, this.userForm.contact, this.userForm.role, this.currentAddress)
     .then(function (result) {
       console.log(result);
+      if (result) {
+        Swal.fire(
+          'Created an account successfully!',
+          `Transaction: ${(result as any).transactionHash}`,
+          'success'
+        )
+      }
     })
   }
 
@@ -114,6 +122,13 @@ export class AdminComponent implements OnInit {
       this.currentAddress)
     .then(function (result) {
       console.log(result);
+      if (result) {
+        Swal.fire(
+          'Created a batch successfully!',
+          `Transaction: ${(result as any).transactionHash}`,
+          'success'
+        )
+      }
     })
   }
 

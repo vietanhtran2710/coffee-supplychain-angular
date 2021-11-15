@@ -19,9 +19,11 @@
     "@angular/platform-browser": "~11.1.1",
     "@angular/platform-browser-dynamic": "~11.1.1",
     "@angular/router": "~11.1.1",
+    "@sweetalert2/ngx-sweetalert2": "^10.0.0",
     "@walletconnect/web3-provider": "^1.6.6",
     "moralis": "0.0.132",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.1.10",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },
