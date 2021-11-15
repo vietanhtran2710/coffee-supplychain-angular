@@ -151,7 +151,7 @@ export class UserComponent implements OnInit {
     this.processingForm.temperature = '';
   }
 
-  updateFarmInspectorDetails() {
+  updateFarmInspectorDeta() {
     this.coffeeService.updateFarmInspectorData(this.currentBatch, this.farmForm.family, this.farmForm.seedType, this.farmForm.fert, this.currentAddress)
     .then(function (result) {
       console.log(result);
