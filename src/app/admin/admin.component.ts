@@ -54,7 +54,7 @@ export class AdminComponent implements OnInit {
       ["IMPORTER", 3],
       ["PROCESSOR", 4],
       ["DONE", 5]
-  ]);
+    ]);
     this.currentAddress = Moralis.User.current().get('ethAddress');
     this.userService.getPastEvents()
     .then(function(result) {
