@@ -31,6 +31,15 @@ export class BatchComponent implements OnInit {
     temperature: '',
     humidity: '',
   }
+  exporterData = {
+    quantity: 0,
+    destination: '',
+    shipName: '',
+    shipNo: '',
+    dateTime: '',
+    exporterID: 0,
+    departure: ''
+  }
 
   constructor(private coffeeService: CoffeeService,
               private route: ActivatedRoute,
@@ -85,7 +94,17 @@ export class BatchComponent implements OnInit {
           })
         }
         if (stage >= 3) {
-
+          that.coffeeService.getExporterData(that.batchNo, that.currentAddress)
+          .then(function(result) {
+            console.log(result);
+            that.exporterData.dateTime = new Date(parseInt((result as any).estimateDateTime) * 1000).toUTCString();
+            that.exporterData.destination = (result as any).destinationAddress;
+            that.exporterData.departure = new Date(parseInt((result as any).departureDateTime) * 1000).toUTCString();
+            that.exporterData.exporterID = (result as any).exporterId;
+            that.exporterData.quantity = (result as any).quantity;
+            that.exporterData.shipName = (result as any).shipName;
+            that.exporterData.shipNo = (result as any).shipNo;
+          })
         }
         if (stage >= 4) {
 

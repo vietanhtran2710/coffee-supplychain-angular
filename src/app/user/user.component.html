@@ -204,7 +204,7 @@
                     </div> 
                     <div class="form-group">
                         <label class="control-label" for="estimateDateTime">Estimate Datetime</label>
-                        <input type="text" class="form-control datepicker-master" id="estimateDateTime" name="estimateDateTime" placeholder="Estimate Datetime" data-parsley-required="true"
+                        <input type="date" class="form-control datepicker-master" id="estimateDateTime" name="estimateDateTime" placeholder="Estimate Datetime" data-parsley-required="true"
                         [(ngModel)]="exporterForm.dateTime" #dateTime="ngModel">
                     </div>
                     <div class="form-group">
@@ -214,7 +214,7 @@
                     </div>
                     <div class="form-group float-right">
                         <button type="reset" class="btn btn-default waves-effect" (click)="clearExporterForm">Reset</button>
-                        <button type="button" id="updateExport" class="btn btn-primary">Submit</button>
+                        <button type="button" id="updateExport" class="btn btn-primary" (click)="updateExporterData()">Submit</button>
                     </div>
                 </div>
                 <div *ngIf="stageMap.get(userInfo.role) == 3" class="importer">

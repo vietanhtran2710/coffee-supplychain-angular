@@ -40,7 +40,7 @@ export class UserComponent implements OnInit {
     destination: '',
     shipName: '',
     shipNo: '',
-    dateTime: 0,
+    dateTime: '',
     exporterID: 0,
   }
 
@@ -125,7 +125,7 @@ export class UserComponent implements OnInit {
   }
 
   clearExporterForm() {
-    this.exporterForm.dateTime = 0;
+    this.exporterForm.dateTime = '';
     this.exporterForm.destination = '';
     this.exporterForm.exporterID = 0;
     this.exporterForm.quantity = 0;
@@ -160,6 +160,24 @@ export class UserComponent implements OnInit {
 
   updateHarvesterData() {
     this.coffeeService.updateHarvesterData(this.currentBatch, this.harvesterForm.variety, this.harvesterForm.temperature, this.harvesterForm.humidity, this.currentAddress)
+    .then(function (result) {
+      console.log(result);
+    })
+  }
+
+  updateExporterData() {
+    console.log(this.exporterForm);
+    let date = new Date(this.exporterForm.dateTime).getTime() / 1000;
+    console.log(date);
+    this.coffeeService.updateExporterData(
+      this.currentBatch, 
+      this.exporterForm.quantity, 
+      this.exporterForm.destination,
+      this.exporterForm.shipName,
+      this.exporterForm.shipNo,
+      date,
+      this.exporterForm.exporterID,
+      this.currentAddress)
     .then(function (result) {
       console.log(result);
     })

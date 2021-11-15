@@ -137,6 +137,36 @@
                                         <tr *ngIf="batchStage < 3">
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
+                                        <div *ngIf="batchStage >= 3">
+                                            <tr>
+                                                <td><b>Departure DateTime: </b></td>
+                                                <td>{{exporterData.departure}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Destination: </b></td>
+                                                <td>{{exporterData.destination}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Estimated DateTime: </b></td>
+                                                <td>{{exporterData.dateTime}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Exporter ID: </b></td>
+                                                <td>{{exporterData.exporterID}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Quantity: </b></td>
+                                                <td>{{exporterData.quantity}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Ship Name: </b></td>
+                                                <td>{{exporterData.shipName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Ship No: </b></td>
+                                                <td>{{exporterData.shipNo}}</td>
+                                            </tr>
+                                        </div>
                                     </table>  
                                 </div>
                             </div>
