@@ -104,6 +104,20 @@
                                         <tr *ngIf="batchStage < 2"> 
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
+                                        <div *ngIf="batchStage >= 2">
+                                            <tr>
+                                                <td><b>Crop Variety: </b></td>
+                                                <td>{{harvesterData.variety}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Humidity: </b></td>
+                                                <td>{{harvesterData.humidity}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Temperature Used: </b></td>
+                                                <td>{{harvesterData.temperature}}</td>
+                                            </tr>
+                                        </div>
                                     </table>        
                                 </div>
                             </div>

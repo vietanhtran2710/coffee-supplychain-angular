@@ -26,6 +26,11 @@ export class BatchComponent implements OnInit {
     family: '',
     fert: ''
   }
+  harvesterData = {
+    variety: '',
+    temperature: '',
+    humidity: '',
+  }
 
   constructor(private coffeeService: CoffeeService,
               private route: ActivatedRoute,
@@ -71,7 +76,13 @@ export class BatchComponent implements OnInit {
           })
         }
         if (stage >= 2) {
-
+          that.coffeeService.getHarvesterData(that.batchNo, that.currentAddress)
+          .then(function(result) {
+            console.log(result);
+            that.harvesterData.humidity = (result as any).humidity;
+            that.harvesterData.variety = (result as any).cropVariety;
+            that.harvesterData.temperature = (result as any).temperatureUsed;
+          })
         }
         if (stage >= 3) {
 

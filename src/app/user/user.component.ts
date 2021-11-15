@@ -158,6 +158,13 @@ export class UserComponent implements OnInit {
     })
   }
 
+  updateHarvesterData() {
+    this.coffeeService.updateHarvesterData(this.currentBatch, this.harvesterForm.variety, this.harvesterForm.temperature, this.harvesterForm.humidity, this.currentAddress)
+    .then(function (result) {
+      console.log(result);
+    })
+  }
+
   viewBatch(batchNo) {
     this.router.navigateByUrl(`/batch/${batchNo}`);
   }

@@ -85,4 +85,25 @@ export class CoffeeService {
       })
     })
   }
+
+  async updateHarvesterData(batchNo, variety, temperature, humidity, currentAccount) {
+    const that = this;
+    return new Promise((resolve, reject) => {
+      that.contract.methods.updateHarvesterData(batchNo, variety, temperature, humidity).send({from: currentAccount})
+      .then(function(result) {
+        return resolve(result);
+      })
+    })
+  }
+
+  async getHarvesterData(batchNo, currentAccount) {
+    await this.initWeb3();
+    const that = this;
+    return new Promise((resolve, reject) => {
+      that.contract.methods.getHarvesterData(batchNo).call({from: currentAccount})
+      .then(function(result) {
+        return resolve(result);
+      })
+    })
+  }
 }
