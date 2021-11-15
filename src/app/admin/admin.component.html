@@ -195,27 +195,32 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label class="control-label" for="farmerRegistrationNo">Farmer Registration No <i class="red">*</i></label>
-                    <input type="text" class="form-control" id="farmerRegistrationNo" name="farmerRegistrationNo" placeholder="Registration No" data-parsley-required="true">
+                    <input type="text" class="form-control" id="farmerRegistrationNo" name="farmerRegistrationNo" placeholder="Registration No" data-parsley-required="true"
+                    [(ngModel)]="batchForm.regisNo" #regisNo="ngModel">>
                 </div> 
                 <div class="form-group">
                     <label class="control-label" for="farmerName">Farmer Name <i class="red">*</i></label>
-                    <input type="text" class="form-control" id="farmerName" name="farmerName" placeholder="Farmer Name" data-parsley-required="true">
+                    <input type="text" class="form-control" id="farmerName" name="farmerName" placeholder="Farmer Name" data-parsley-required="true"
+                    [(ngModel)]="batchForm.farmerName" #farmerName="ngModel">>
                 </div>                              
                 <div class="form-group">
                     <label class="control-label" for="farmerAddress">Farmer Address <i class="red">*</i></label>
-                    <textarea class="form-control" id="farmerAddress" name="farmerAddress" placeholder="Farmer Address" data-parsley-required="true"></textarea>
+                    <textarea class="form-control" id="farmerAddress" name="farmerAddress" placeholder="Farmer Address" data-parsley-required="true"
+                    [(ngModel)]="batchForm.farmerAddress" #farmerAddress="ngModel"></textarea>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="exporterName">Exporter Name <i class="red">*</i></label>
-                    <input type="text" class="form-control" id="exporterName" name="exporterName" placeholder="Exporter Name" data-parsley-required="true">
+                    <input type="text" class="form-control" id="exporterName" name="exporterName" placeholder="Exporter Name" data-parsley-required="true"
+                    [(ngModel)]="batchForm.exporterName" #exporterName="ngModel">>
                 </div> 
                 <div class="form-group">
                     <label class="control-label" for="importerName">Importer Name <i class="red">*</i></label>
-                    <input type="text" class="form-control" id="importerName" name="importerName" placeholder="Importer Name" data-parsley-required="true">
+                    <input type="text" class="form-control" id="importerName" name="importerName" placeholder="Importer Name" data-parsley-required="true"
+                    [(ngModel)]="batchForm.importerName" #importerName="ngModel">>
                     </div>             
             </div>
             <div class="modal-footer">
-                 <button type="submit" onclick="addCultivationBatch();" class="fcbtn btn btn-primary btn-outline btn-1f">Submit</button>
+                 <button type="submit" (click)="createBatch()" class="fcbtn btn btn-primary btn-outline btn-1f">Submit</button>
             </div>
         </div>
     </div>

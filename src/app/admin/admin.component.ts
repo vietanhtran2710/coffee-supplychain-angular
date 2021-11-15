@@ -3,7 +3,7 @@ import Moralis from 'moralis';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../services/supplyUser/user.service';
-import { AnimateChildOptions } from '@angular/animations';
+import { CoffeeService } from '../services/coffeeSupply/coffee.service';
 
 @Component({
   selector: 'app-admin',
@@ -25,19 +25,31 @@ export class AdminComponent implements OnInit {
     contact: '',
     role: ''
   }
+
+  batchForm = {
+    regisNo: '',
+    farmerName: '',
+    farmerAddress: '',
+    exporterName: '',
+    importerName: '',
+  }
+
+  batchInfo = []
   usersInfo = []
   
   currentAddress = ''
   numberOfUsers = 0
 
   constructor(private router: Router,
-              private userService: UserService) { }
+              private userService: UserService,
+              private coffeeService: CoffeeService) { }
 
   ngOnInit(): void {
     let that = this;
     this.currentAddress = Moralis.User.current().get('ethAddress');
     this.userService.getPastEvents()
     .then(function(result) {
+      console.log(result);
       that.numberOfUsers = (result as any).length;
       for (let item of (result as any)) {
         that.userService.getUserDetail(item.returnValues[0], that.currentAddress)
@@ -64,6 +76,19 @@ export class AdminComponent implements OnInit {
   createUser() {
     console.log(this.userForm);
     this.userService.createUser(this.userForm.address, this.userForm.name, this.userForm.contact, this.userForm.role, this.currentAddress)
+    .then(function (result) {
+      console.log(result);
+    })
+  }
+
+  createBatch() {
+    this.coffeeService.createBatch(
+      this.batchForm.regisNo, 
+      this.batchForm.farmerAddress, 
+      this.batchForm.farmerAddress, 
+      this.batchForm.exporterName, 
+      this.batchForm.importerName, 
+      this.currentAddress)
     .then(function (result) {
       console.log(result);
     })
