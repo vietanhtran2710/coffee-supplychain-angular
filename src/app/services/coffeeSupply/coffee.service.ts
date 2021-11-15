@@ -31,4 +31,26 @@ export class CoffeeService {
       })
     })
   }
+
+  async getBatches() {
+    await this.initWeb3();
+    const that = this;
+    return new Promise((resolve, reject) => {
+      that.contract.getPastEvents('PerformCultivation', {fromBlock: 0})
+      .then(function(result) {
+        return resolve(result);
+      })
+    })
+  }
+
+  async getBatchStatus(batchNo, currentAccount) {
+    await this.initWeb3();
+    const that = this;
+    return new Promise((resolve, reject) => {
+      that.contract.methods.getNextAction(batchNo).call({from: currentAccount})
+      .then(function(result) {
+        return resolve(result);
+      })
+    })
+  }
 }

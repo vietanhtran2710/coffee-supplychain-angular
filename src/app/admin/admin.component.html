@@ -36,7 +36,7 @@
                 <h3 class="box-title">Total Batches</h3>
                 <ul class="list-inline two-part">
                     <li><i class="fa icon-dropbox text-success"></i></li>
-                    <li class="text-right"><span class="counter text-success" id="totalBatch">0</span></li>
+                    <li class="text-right"><span class="counter text-success" id="totalBatch">{{batchInfo.length}}</span></li>
                 </ul>
             </div>
         </div>
@@ -66,17 +66,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                                <tr>
+                                <tr *ngIf="batchInfo.length==0">
                                     <td colspan="7" align="center">No Data Available</td>
                                 </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td><span class="white label label-success font-weight-100">Completed</span></td>
-                                    <td><span class="white label label-success font-weight-100">Completed</span> </td>
-                                    <td><span class="white label label-success font-weight-100">Completed</span> </td>
-                                    <td><span class="white label label-success font-weight-100">Completed</span> </td>
-                                    <td><span class="white label label-success font-weight-100">Completed</span> </td>
+                                <tr *ngFor="let item of batchInfo">
+                                    <td>{{item.no}}</td>
+                                    <td>Coming soon</td>
+                                    <td *ngIf="item.stage == 0"><span class="label label-warning font-weight-100">Processing</span> </td>
+                                    <td *ngIf="item.stage == 1"><span class="label label-warning font-weight-100">Processing</span> </td>
+                                    <td *ngIf="item.stage == 2"><span class="label label-warning font-weight-100">Processing</span> </td>
+                                    <td *ngIf="item.stage == 3"><span class="label label-warning font-weight-100">Processing</span> </td>
+                                    <td *ngIf="item.stage == 4"><span class="label label-warning font-weight-100">Processing</span> </td>
+                                    <td *ngIf="item.stage > 0;else not0"><span class="white label label-success font-weight-100">Completed</span></td>
+                                    <td *ngIf="item.stage > 1;else not1"><span class="white label label-success font-weight-100">Completed</span></td>
+                                    <td *ngIf="item.stage > 2;else not2"><span class="white label label-success font-weight-100">Completed</span></td>
+                                    <td *ngIf="item.stage > 3;else not3"><span class="white label label-success font-weight-100">Completed</span></td>
+                                    <td *ngIf="item.stage > 4;else not4"><span class="white label label-success font-weight-100">Completed</span></td>
+                                    <ng-template #not0><td><span class="label label-danger font-weight-100">Not Available</span></td></ng-template>
+                                    <ng-template #not1><td><span class="label label-danger font-weight-100">Not Available</span></td></ng-template>
+                                    <ng-template #not2><td><span class="label label-danger font-weight-100">Not Available</span></td></ng-template>
+                                    <ng-template #not3><td><span class="label label-danger font-weight-100">Not Available</span></td></ng-template>
+                                    <ng-template #not4><td><span class="label label-danger font-weight-100">Not Available</span></td></ng-template>
                                     <td><a target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="fa fa-eye"></i></a></td>
                                 </tr>   
                         </tbody>

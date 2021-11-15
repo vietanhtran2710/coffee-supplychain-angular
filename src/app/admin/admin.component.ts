@@ -39,6 +39,7 @@ export class AdminComponent implements OnInit {
   
   currentAddress = ''
   numberOfUsers = 0
+  stageMap
 
   constructor(private router: Router,
               private userService: UserService,
@@ -46,6 +47,14 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     let that = this;
+    this.stageMap = new Map([
+      ["FARM_INSPECTION", 0],
+      ["HARVESTER", 1],
+      ["EXPORTER", 2],
+      ["IMPORTER", 3],
+      ["PROCESSOR", 4],
+      ["DONE", 5]
+  ]);
     this.currentAddress = Moralis.User.current().get('ethAddress');
     this.userService.getPastEvents()
     .then(function(result) {
@@ -61,6 +70,20 @@ export class AdminComponent implements OnInit {
             role: (result as any).role
           }
           that.usersInfo.push(info);
+        })
+      }
+    })
+    this.coffeeService.getBatches()
+    .then(function (result) {
+      console.log(result);
+      for (let item of (result as any)) {
+        that.coffeeService.getBatchStatus(item.returnValues.batchNo, that.currentAddress)
+        .then(function (result) {
+          let batch = {
+            no: item.returnValues.batchNo,
+            stage: that.stageMap.get(result)
+          }
+          that.batchInfo.push(batch)
         })
       }
     })
