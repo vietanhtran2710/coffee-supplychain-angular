@@ -3,6 +3,7 @@ import Moralis from 'moralis';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../services/supplyUser/user.service';
+import { AnimateChildOptions } from '@angular/animations';
 
 @Component({
   selector: 'app-admin',
@@ -24,6 +25,7 @@ export class AdminComponent implements OnInit {
     contact: '',
     role: ''
   }
+  usersInfo = []
   
   currentAddress = ''
   numberOfUsers = 0
@@ -37,6 +39,18 @@ export class AdminComponent implements OnInit {
     this.userService.getPastEvents()
     .then(function(result) {
       that.numberOfUsers = (result as any).length;
+      for (let item of (result as any)) {
+        that.userService.getUserDetail(item.returnValues[0], that.currentAddress)
+        .then(function (result) {
+          let info = {
+            address: item.returnValues[0],
+            name: (result as any).name,
+            contact: (result as any).contactNo,
+            role: (result as any).role
+          }
+          that.usersInfo.push(info);
+        })
+      }
     })
   }
 

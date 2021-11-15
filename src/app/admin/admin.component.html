@@ -161,8 +161,15 @@
                                 <th>User Address</th>
                                 <th>Name</th>
                                 <th>Contact No.</th>
-                                <th>Role</th>
+                                <th>Role</th>   
                                 <th>Actions</th>
+                            </tr>
+                            <tr *ngFor="let item of usersInfo">
+                                <td>{{item.address}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.contact}}</td>
+                                <td>{{item.role}}</td>
+                                <td></td>
                             </tr>
                         </thead>
                         <tbody>
