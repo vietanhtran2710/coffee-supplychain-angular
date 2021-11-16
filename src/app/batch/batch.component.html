@@ -186,6 +186,41 @@
                                         <tr *ngIf="batchStage < 4">
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
+                                        <div *ngIf="batchStage >= 4">
+                                            <tr>
+                                                <td><b>Arrival DateTime: </b></td>
+                                                <td>{{importerData.arrivalDateTime}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Importer ID: </b></td>
+                                                <td>{{importerData.destination}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Quantity: </b></td>
+                                                <td>{{importerData.quantity}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Ship Name: </b></td>
+                                                <td>{{importerData.shipName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Ship No: </b></td>
+                                                <td>{{importerData.shipNo}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Transport Info: </b></td>
+                                                <td>{{importerData.transportInfo}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Warehouse Address: </b></td>
+                                                <td>{{importerData.warehouseAddress}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Warehouse Name: </b></td>
+                                                <td>{{importerData.warehouseName}}</td>
+                                            </tr>
+                                            
+                                        </div>
                                     </table>
                                 </div>
                             </div>

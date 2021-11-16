@@ -127,4 +127,26 @@ export class CoffeeService {
       })
     })
   }
+
+  async updateImporterData(batchNo, quantity, shipName, shipNo, transportInfo, warehouseName, warehouseAddress, importerID, currentAccount) {
+    const that = this;
+    return new Promise((resolve, reject) => {
+      that.contract.methods.updateImporterData(batchNo, quantity, shipName, shipNo, transportInfo, warehouseName, warehouseAddress, importerID)
+      .send({from: currentAccount})
+      .then(function(result) {
+        return resolve(result);
+      })
+    })
+  }
+
+  async getImporterData(batchNo, currentAccount) {
+    await this.initWeb3();
+    const that = this;
+    return new Promise((resolve, reject) => {
+      that.contract.methods.getImporterData(batchNo).call({from: currentAccount})
+      .then(function(result) {
+        return resolve(result);
+      })
+    })
+  }
 }

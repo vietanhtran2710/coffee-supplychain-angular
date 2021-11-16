@@ -220,39 +220,46 @@
                 <div *ngIf="stageMap.get(userInfo.role) == 3" class="importer">
                     <div class="form-group">
                         <label class="control-label" for="quantity">Quantity</label>
-                        <input type="number" min="1" class="form-control" id="quantity" name="quantity" placeholder="Quantity" data-parsley-required="true">
+                        <input type="number" min="1" class="form-control" id="quantity" name="quantity" placeholder="Quantity" data-parsley-required="true"
+                        [(ngModel)]="importerForm.quantity" #importerQuanity="ngModel">
                     </div>
                 
                     <div class="form-group">
                         <label class="control-label" for="shipName">Ship Name</label>
-                        <input type="text" class="form-control" id="shipName" name="shipName" placeholder="Ship Name" data-parsley-required="true">
+                        <input type="text" class="form-control" id="shipName" name="shipName" placeholder="Ship Name" data-parsley-required="true"
+                        [(ngModel)]="importerForm.shipName" #importerShipName="ngModel">
                     </div> 
                 
                     <div class="form-group">
                         <label class="control-label" for="shipNo">Ship No</label>
-                        <input type="text" class="form-control" id="shipNo" name="shipNo" placeholder="Ship No" data-parsley-required="true">
+                        <input type="text" class="form-control" id="shipNo" name="shipNo" placeholder="Ship No" data-parsley-required="true"
+                        [(ngModel)]="importerForm.shipNo" #importerShipNo="ngModel">
                     </div> 
                 
                     <div class="form-group">
                         <label class="control-label" for="transportInfo">Transport Info</label>
-                        <input type="text" class="form-control" id="transportInfo" name="transportInfo" placeholder="Transport Info" data-parsley-required="true">
+                        <input type="text" class="form-control" id="transportInfo" name="transportInfo" placeholder="Transport Info" data-parsley-required="true"
+                        [(ngModel)]="importerForm.transportInfo" #importerTransportInfo="ngModel">
                     </div> 
                     <div class="form-group">
                         <label class="control-label" for="warehouseName">Warehouse Name</label>
-                        <input type="text" class="form-control" id="warehouseName" name="warehouseName" placeholder="Warehouse Name" data-parsley-required="true">
+                        <input type="text" class="form-control" id="warehouseName" name="warehouseName" placeholder="Warehouse Name" data-parsley-required="true"
+                        [(ngModel)]="importerForm.warehouseName" #warehouseName="ngModel">
                     </div> 
                     <div class="form-group">
                         <label class="control-label" for="warehouseAddress">Warehouse Address</label>
-                        <input type="text" class="form-control" id="warehouseAddress" name="warehouseAddress" placeholder="Warehouse Address" data-parsley-required="true" >
+                        <input type="text" class="form-control" id="warehouseAddress" name="warehouseAddress" placeholder="Warehouse Address" data-parsley-required="true" 
+                        [(ngModel)]="importerForm.warehouseAddress" #warehouseAddress="ngModel">
                     </div>                              
                     <div class="form-group">
                         <label class="control-label" for="importerId">Importer Id</label>
-                        <input type="number" min="1" class="form-control" id="importerId" name="importerId" placeholder="Importer Id" data-parsley-required="true" >
+                        <input type="number" min="1" class="form-control" id="importerId" name="importerId" placeholder="Importer Id" data-parsley-required="true" 
+                        [(ngModel)]="importerForm.importerID" #importerId="ngModel">
                     </div>                              
                     
                         <div class="form-group float-right">
                         <button type="reset" class="btn btn-default waves-effect" (click)="clearImporterForm()">Reset</button>
-                        <button type="button" id="updateImport"class="btn btn-primary">Submit</button>
+                        <button type="button" id="updateImport"class="btn btn-primary" (click)="updateImporterData()">Submit</button>
                     </div>
                 </div>
                 <div *ngIf="stageMap.get(userInfo.role) == 4" class="processing">

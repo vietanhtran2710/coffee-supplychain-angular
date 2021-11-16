@@ -40,6 +40,16 @@ export class BatchComponent implements OnInit {
     exporterID: 0,
     departure: ''
   }
+  importerData = {
+    arrivalDateTime: '',
+    quantity: 0,
+    shipName: '',
+    shipNo: '',
+    transportInfo: '',
+    warehouseName: '',
+    warehouseAddress: '',
+    importerID: 0 
+  }
 
   constructor(private coffeeService: CoffeeService,
               private route: ActivatedRoute,
@@ -107,7 +117,18 @@ export class BatchComponent implements OnInit {
           })
         }
         if (stage >= 4) {
-
+          that.coffeeService.getImporterData(that.batchNo, that.currentAddress)
+          .then(function (result) {
+            console.log(result);
+            that.importerData.arrivalDateTime = new Date(parseInt((result as any).arrivalDateTime) * 1000).toUTCString();
+            that.importerData.quantity = (result as any).importerId;
+            that.importerData.shipName = (result as any).shipName;
+            that.importerData.shipNo = (result as any).shipNo;
+            that.importerData.transportInfo = (result as any).transportInfo;
+            that.importerData.warehouseAddress = (result as any).warehouseAddress;
+            that.importerData.warehouseName = (result as any).warehouseName;
+            that.importerData.importerID = (result as any).importerId;
+          })
         }
         if (stage >= 5) {
 

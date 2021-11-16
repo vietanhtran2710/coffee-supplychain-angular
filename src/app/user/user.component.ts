@@ -47,6 +47,8 @@ export class UserComponent implements OnInit {
 
   importerForm = {
     quantity: 0,
+    shipName: '',
+    shipNo: '',
     transportInfo: '',
     warehouseName: '',
     warehouseAddress: '',
@@ -207,6 +209,29 @@ export class UserComponent implements OnInit {
 
   viewBatch(batchNo) {
     this.router.navigateByUrl(`/batch/${batchNo}`);
+  }
+
+  updateImporterData() {
+    console.log(this.importerForm);
+    this.coffeeService.updateImporterData(
+      this.currentBatch, 
+      this.importerForm.quantity,
+      this.importerForm.shipName,
+      this.importerForm.shipNo,
+      this.importerForm.transportInfo,
+      this.importerForm.warehouseName,
+      this.importerForm.warehouseAddress,
+      this.importerForm.importerID,
+      this.currentAddress)
+    .then(function(result) {
+      if (result) {
+        Swal.fire(
+          'Update importer data successfully!',
+          `Transaction: ${(result as any).transactionHash}`,
+          'success'
+        )
+      }
+    })
   }
 
 }
