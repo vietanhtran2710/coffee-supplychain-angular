@@ -234,4 +234,29 @@ export class UserComponent implements OnInit {
     })
   }
 
+  updateProcessorData() {
+    console.log(this.processingForm);
+    let date = new Date(this.processingForm.dateTime).getTime() / 1000;
+    this.coffeeService.updateProcessorData(
+      this.currentBatch,
+      this.processingForm.quantity,
+      this.processingForm.temperature,
+      this.processingForm.roastingTime,
+      this.processingForm.internalNo,
+      date,
+      this.processingForm.processorName,
+      this.processingForm.processAddress,
+      this.currentAddress
+    )
+    .then(function (result) {
+      if (result) {
+        Swal.fire(
+          'Update processor data successfully!',
+          `Transaction: ${(result as any).transactionHash}`,
+          'success'
+        )
+      }
+    })
+  }
+
 }

@@ -50,6 +50,15 @@ export class BatchComponent implements OnInit {
     warehouseAddress: '',
     importerID: 0 
   }
+  processorData = {
+    internalBatchNo: '',
+    packageDateTime: '',
+    processorAddress: '',
+    processorName: '',
+    quantity: 0,
+    rostingDuration: '',
+    temperature: ''
+  }
 
   constructor(private coffeeService: CoffeeService,
               private route: ActivatedRoute,
@@ -131,7 +140,17 @@ export class BatchComponent implements OnInit {
           })
         }
         if (stage >= 5) {
-
+          that.coffeeService.getProcessorData(that.batchNo, that.currentAddress)
+          .then(function (result) {
+            console.log(result);
+            that.processorData.internalBatchNo = (result as any).internalBatchNo;
+            that.processorData.packageDateTime = new Date(parseInt((result as any).packageDateTime) * 1000).toUTCString();
+            that.processorData.processorAddress = (result as any).processorAddress;
+            that.processorData.processorName = (result as any).processorName;
+            that.processorData.quantity = (result as any).quantity;
+            that.processorData.rostingDuration = (result as any).rostingDuration;
+            that.processorData.temperature = (result as any).temperature;
+          })
         }
       })
     })

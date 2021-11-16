@@ -240,6 +240,36 @@
                                         <tr *ngIf="batchStage < 5">
                                             <td colspan="2"><p>Information Not Avilable</p></td>
                                         </tr>
+                                        <div *ngIf="batchStage >= 0">
+                                            <tr>
+                                                <td><b>Internal Batch No: </b></td>
+                                                <td>{{processorData.internalBatchNo}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Package Date Time: </b></td>
+                                                <td>{{processorData.packageDateTime}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Processor Address: </b></td>
+                                                <td>{{processorData.processorAddress}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Processor Name: </b></td>
+                                                <td>{{processorData.processorName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Quantity: </b></td>
+                                                <td>{{processorData.quantity}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Roasting Duration: </b></td>
+                                                <td>{{processorData.rostingDuration}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Temperature: </b></td>
+                                                <td>{{processorData.temperature}}</td>
+                                            </tr>
+                                        </div>
                                     </table>
                                 </div>
                             </div>

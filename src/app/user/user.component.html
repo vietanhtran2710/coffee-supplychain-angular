@@ -265,37 +265,44 @@
                 <div *ngIf="stageMap.get(userInfo.role) == 4" class="processing">
                     <div class="form-group">
                         <label class="control-label" for="quantity">Quantity (in Kg)</label>
-                        <input type="number" min="1" class="form-control" id="quantity" name="quantity" placeholder="Quantity" data-parsley-required="true">
+                        <input type="number" min="1" class="form-control" id="quantity" name="quantity" placeholder="Quantity" data-parsley-required="true"
+                        [(ngModel)]="processingForm.quantity" #processingQuantity="ngModel">
                     </div> 
                     <div class="form-group">
                         <label class="control-label" for="processingTemperature">Temperature (in Fahrenheit)</label>
-                        <input type="text" class="form-control" id="processingTemperature" name="temperature" placeholder="Temperature" data-parsley-required="true">
+                        <input type="text" class="form-control" id="processingTemperature" name="temperature" placeholder="Temperature" data-parsley-required="true"
+                        [(ngModel)]="processingForm.temperature" #processingTemperature="ngModel">
                     </div>                              
                     <div class="form-group">
                         <label class="control-label" for="rostingDuration">Time for Roasting (in Seconds)</label>
-                        <input type="number" min="1" class="form-control" id="rostingDuration" name="rostingDuration" placeholder="Time for roasting" data-parsley-required="true" >
+                        <input type="number" min="1" class="form-control" id="rostingDuration" name="rostingDuration" placeholder="Time for roasting" data-parsley-required="true" 
+                        [(ngModel)]="processingForm.roastingTime" #duration="ngModel">
                     </div>
                 
                     <div class="form-group">
                         <label class="control-label" for="internalBatchNo">Internal Batch no</label>
-                        <input type="text" class="form-control" id="internalBatchNo" name="internalBatchNo" placeholder="Internal Batch no" data-parsley-required="true">
+                        <input type="text" class="form-control" id="internalBatchNo" name="internalBatchNo" placeholder="Internal Batch no" data-parsley-required="true"
+                        [(ngModel)]="processingForm.internalNo" #interalNo="ngModel">
                     </div>
                 
                     <div class="form-group">
                         <label class="control-label" for="packageDateTime">Packaging Date & Time</label>
-                        <input type="text" class="form-control datepicker-master" id="packageDateTime" name="packageDateTime" placeholder="Packaging Date" data-parsley-required="true">
+                        <input type="date" class="form-control datepicker-master" id="packageDateTime" name="packageDateTime" placeholder="Packaging Date" data-parsley-required="true"
+                        [(ngModel)]="processingForm.dateTime" #packageDateTime="ngModel">
                     </div> 
                     <div class="form-group">
                         <label class="control-label" for="processorName">Processor Name</label>
-                        <input type="text" class="form-control" id="processorName" name="processorName" placeholder="Processor Name" data-parsley-required="true">
+                        <input type="text" class="form-control" id="processorName" name="processorName" placeholder="Processor Name" data-parsley-required="true"
+                        [(ngModel)]="processingForm.processorName" #processorName="ngModel">
                     </div>                              
                     <div class="form-group">
                         <label class="control-label" for="processorAddress">Processor Address</label>
-                        <input type="text" class="form-control" id="processorAddress" name="processorAddress" placeholder="Processor Address" data-parsley-required="true">
+                        <input type="text" class="form-control" id="processorAddress" name="processorAddress" placeholder="Processor Address" data-parsley-required="true"
+                        [(ngModel)]="processingForm.processAddress" #processorAddress="ngModel">
                     </div>
                         <div class="form-group float-right">
                         <button type="reset" class="btn btn-default waves-effect" (click)="clearProcessingForm()">Reset</button>
-                        <button type="button" id="updateProcessor"class="btn btn-primary">Submit</button>
+                        <button type="button" id="updateProcessor"class="btn btn-primary" (click)="updateProcessorData()">Submit</button>
                     </div>
                 </div>
             </div>
