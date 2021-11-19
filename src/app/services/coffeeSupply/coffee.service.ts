@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import Moralis from 'moralis';
 import { environment } from 'src/environments/environment';
+import { UserService } from '../supplyUser/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class CoffeeService {
   private adminAddress = environment.adminAddress
   private contract: any; 
 
-  constructor() { 
+  constructor(private userService: UserService) { 
     this.initWeb3();
   }
 
@@ -168,6 +169,54 @@ export class CoffeeService {
       that.contract.methods.getProcessorData(batchNo).call({from: currentAccount})
       .then(function(result) {
         return resolve(result);
+      })
+    })
+  }
+
+  async getActivityTimestamp(activity, batchNo, currentAccount) {
+    await this.initWeb3();
+    const that = this;
+    return new Promise((resolve, reject) => {
+      that.contract.getPastEvents(activity, {fromBlock: 0, filter: {batchNo: batchNo}})
+      .then(function(result) {
+        try
+        {
+          that.web3.eth.getBlock(result[0].blockNumber)
+          .then(function(blockData) {
+            let resultData = {
+              dataTime: '',
+              transactionHash: '',
+              name: '',
+              contactNo: '',
+              address: ''
+            };
+            let date = blockData.timestamp;
+            date = new Date(date * 1000).toUTCString();
+
+            resultData.dataTime = date;
+            resultData.transactionHash = result[0].transactionHash;
+
+            let userAddress = result[0].returnValues.user;
+            resultData.address = userAddress;
+            if (userAddress.toLowerCase() == that.adminAddress) {
+              resultData.name = 'Admin';
+              resultData.contactNo = '-';
+              return resolve(resultData);
+            }
+            else {
+              that.userService.getUserDetail(userAddress, currentAccount)
+              .then(function (result) {
+                resultData.name = (result as any).name;
+                resultData.contactNo = (result as any).contactNo;
+                return resolve(resultData);
+              })
+            }
+          })
+        }
+        catch(e)
+        {
+          return reject(false);
+        }
       })
     })
   }

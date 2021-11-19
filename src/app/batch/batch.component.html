@@ -22,8 +22,21 @@
                             <div class="timeline-panel" id="cultivationSection">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Cultivation</h4>
-                                    <p><small class="text-muted text-success activityDateTime"></small> </p>
-                                    <span class="activityQrCode"></span>
+                                    <p *ngIf="batchStage >= 0"><small class="text-muted text-success activityDateTime">
+                                        <span class="text-info"><i class='fa fa-user'> </i>
+                                            {{basicDetail.user}} ({{basicDetail.address}}) <br/>
+                                            <i class='fa fa-phone'> </i>
+                                            {{basicDetail.userContact}} <br/>
+                                        </span>
+                                        <i class='fa fa-clock-o'> </i> {{basicDetail.time}}
+                                        <a href="" target='_blank'><i class='fa fa-external-link text-danger'></i></a>
+                                        </small> 
+                                    </p>
+                                    <span *ngIf="batchStage >= 0" class="activityQrCode">
+                                        <a href={{basicDetail.qrCode}} title={{basicDetail.transaction}} class="qr-code-magnify pull-right" data-effect="mfp-zoom-in">
+                                            <img src={{basicDetail.qrCode}} class="img-responsive" style="width:70px; height:70px; margin-top:-75px;"/>
+                                        </a>
+                                    </span>
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table activityData table-responsive" >
@@ -64,8 +77,21 @@
                             <div class="timeline-panel" id="farmInspectionSection">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Farm-Inspector</h4>
-                                    <p><small class="text-muted text-success activityDateTime"></small> </p>
-                                    <span class="activityQrCode"></span>
+                                    <p *ngIf="batchStage >= 1"><small class="text-muted text-success activityDateTime">
+                                        <span class="text-info"><i class='fa fa-user'> </i>
+                                            {{farmInspectorData.user}} ({{farmInspectorData.address}}) <br/>
+                                            <i class='fa fa-phone'> </i>
+                                            {{farmInspectorData.userContact}} <br/>
+                                        </span>
+                                        <i class='fa fa-clock-o'> </i> {{farmInspectorData.time}}
+                                        <a href="" target='_blank'><i class='fa fa-external-link text-danger'></i></a>
+                                        </small> 
+                                    </p>
+                                    <span *ngIf="batchStage >= 1" class="activityQrCode">
+                                        <a href={{farmInspectorData.qrCode}} title={{farmInspectorData.transaction}} class="qr-code-magnify pull-right" data-effect="mfp-zoom-in">
+                                            <img src={{farmInspectorData.qrCode}} class="img-responsive" style="width:70px; height:70px; margin-top:-75px;"/>
+                                        </a>
+                                    </span>
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table activityData table-responsive">
@@ -98,8 +124,21 @@
                             <div class="timeline-panel" id="harvesterSection">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Harvester</h4>
-                                    <p><small class="text-muted text-success activityDateTime"></small> </p>
-                                    <span class="activityQrCode"></span>
+                                    <p *ngIf="batchStage >= 2"><small class="text-muted text-success activityDateTime">
+                                        <span class="text-info"><i class='fa fa-user'> </i>
+                                            {{harvesterData.user}} ({{harvesterData.address}}) <br/>
+                                            <i class='fa fa-phone'> </i>
+                                            {{harvesterData.userContact}} <br/>
+                                        </span>
+                                        <i class='fa fa-clock-o'> </i> {{harvesterData.time}}
+                                        <a href="" target='_blank'><i class='fa fa-external-link text-danger'></i></a>
+                                        </small> 
+                                    </p>
+                                    <span *ngIf="batchStage >= 2" class="activityQrCode">
+                                        <a href={{harvesterData.qrCode}} title={{harvesterData.transaction}} class="qr-code-magnify pull-right" data-effect="mfp-zoom-in">
+                                            <img src={{harvesterData.qrCode}} class="img-responsive" style="width:70px; height:70px; margin-top:-75px;"/>
+                                        </a>
+                                    </span>
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table activityData table-responsive" >
@@ -132,8 +171,21 @@
                             <div class="timeline-panel" id="exporterSection"> 
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Exporter</h4>
-                                    <p><small class="text-muted text-success activityDateTime"></small> </p>
-                                    <span class="activityQrCode"></span>
+                                    <p *ngIf="batchStage >= 3"><small class="text-muted text-success activityDateTime">
+                                        <span class="text-info"><i class='fa fa-user'> </i>
+                                            {{exporterData.user}} ({{exporterData.address}}) <br/>
+                                            <i class='fa fa-phone'> </i>
+                                            {{exporterData.userContact}} <br/>
+                                        </span>
+                                        <i class='fa fa-clock-o'> </i> {{exporterData.time}}
+                                        <a href="" target='_blank'><i class='fa fa-external-link text-danger'></i></a>
+                                        </small> 
+                                    </p>
+                                    <span *ngIf="batchStage >= 3" class="activityQrCode">
+                                        <a href={{exporterData.qrCode}} title={{exporterData.transaction}} class="qr-code-magnify pull-right" data-effect="mfp-zoom-in">
+                                            <img src={{exporterData.qrCode}} class="img-responsive" style="width:70px; height:70px; margin-top:-75px;"/>
+                                        </a>
+                                    </span>
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table activityData table-responsive">
@@ -182,8 +234,21 @@
                             <div class="timeline-panel" id="importerSection">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Importer</h4>
-                                    <p><small class="text-muted text-success activityDateTime"></small> </p>
-                                    <span class="activityQrCode"></span>
+                                    <p *ngIf="batchStage >= 4"><small class="text-muted text-success activityDateTime">
+                                        <span class="text-info"><i class='fa fa-user'> </i>
+                                            {{importerData.user}} ({{importerData.address}}) <br/>
+                                            <i class='fa fa-phone'> </i>
+                                            {{importerData.userContact}} <br/>
+                                        </span>
+                                        <i class='fa fa-clock-o'> </i> {{importerData.time}}
+                                        <a href="" target='_blank'><i class='fa fa-external-link text-danger'></i></a>
+                                        </small> 
+                                    </p>
+                                    <span *ngIf="batchStage >= 4" class="activityQrCode">
+                                        <a href={{importerData.qrCode}} title={{importerData.transaction}} class="qr-code-magnify pull-right" data-effect="mfp-zoom-in">
+                                            <img src={{importerData.qrCode}} class="img-responsive" style="width:70px; height:70px; margin-top:-75px;"/>
+                                        </a>
+                                    </span>
                                 </div>
                                 <div class="timeline-body">
                                    <table class="table activityData table-responsive" >
@@ -237,8 +302,21 @@
                             <div class="timeline-panel" id="processorSection">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">Processor</h4>
-                                    <p><small class="text-muted text-success activityDateTime"></small> </p>
-                                    <span class="activityQrCode"></span>
+                                    <p *ngIf="batchStage >= 4"><small class="text-muted text-success activityDateTime">
+                                        <span class="text-info"><i class='fa fa-user'> </i>
+                                            {{processorData.user}} ({{processorData.address}}) <br/>
+                                            <i class='fa fa-phone'> </i>
+                                            {{processorData.userContact}} <br/>
+                                        </span>
+                                        <i class='fa fa-clock-o'> </i> {{processorData.time}}
+                                        <a href="" target='_blank'><i class='fa fa-external-link text-danger'></i></a>
+                                        </small> 
+                                    </p>
+                                    <span *ngIf="batchStage >= 5" class="activityQrCode">
+                                        <a href={{processorData.qrCode}} title={{processorData.transaction}} class="qr-code-magnify pull-right" data-effect="mfp-zoom-in">
+                                            <img src={{processorData.qrCode}} class="img-responsive" style="width:70px; height:70px; margin-top:-75px;"/>
+                                        </a>
+                                    </span>
                                 </div>
                                 <div class="timeline-body">
                                     <table class="table activityData table-responsive" >
