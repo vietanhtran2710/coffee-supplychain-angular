@@ -33,25 +33,26 @@
                                         <div *ngIf="batchStage >= 0">
                                             <tr>
                                                 <td><b>Farmer Name: </b></td>
-                                                <td>{{basicDetail.farmerName}}</td>
+                                                <td>{{basicDetail.farmerName}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Farm Address: </b></td>
-                                                <td>{{basicDetail.farmerAddress}}</td>
+                                                <td>{{basicDetail.farmerAddress}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Exporter Name: </b></td>
-                                                <td>{{basicDetail.exporterName}}</td>
+                                                <td>{{basicDetail.exporterName}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Importer Name: </b></td>
-                                                <td>{{basicDetail.importerName}}</td>
+                                                <td>{{basicDetail.importerName}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Registration No: </b></td>
-                                                <td>{{basicDetail.regisNo}}</td>
+                                                <td>{{basicDetail.regisNo}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                         </div>
+                                        <img src="../../assets/verified.jpg" alt="user-img" style="width:80px;height:80px" class="img-circle pull-right">
                                     </table>
                                 </div>
                             </div>
@@ -74,17 +75,18 @@
                                         <div *ngIf="batchStage >= 1">
                                             <tr>
                                                 <td><b>Coffee Family: </b></td>
-                                                <td>{{farmInspectorData.family}}</td>
+                                                <td>{{farmInspectorData.family}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Fertilizer Used: </b></td>
-                                                <td>{{farmInspectorData.fert}}</td>
+                                                <td>{{farmInspectorData.fert}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Type Of Seed: </b></td>
-                                                <td>{{farmInspectorData.seed}}</td>
+                                                <td>{{farmInspectorData.seed}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                         </div>
+                                        <img src="../../assets/verified.jpg" alt="user-img" style="width:80px;height:80px" class="img-circle pull-right">
                                     </table>
                                 </div>
                             </div>
@@ -107,17 +109,18 @@
                                         <div *ngIf="batchStage >= 2">
                                             <tr>
                                                 <td><b>Crop Variety: </b></td>
-                                                <td>{{harvesterData.variety}}</td>
+                                                <td>{{harvesterData.variety}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Humidity: </b></td>
-                                                <td>{{harvesterData.humidity}}</td>
+                                                <td>{{harvesterData.humidity}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Temperature Used: </b></td>
-                                                <td>{{harvesterData.temperature}}</td>
+                                                <td>{{harvesterData.temperature}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                         </div>
+                                        <img src="../../assets/verified.jpg" alt="user-img" style="width:80px;height:80px" class="img-circle pull-right">
                                     </table>        
                                 </div>
                             </div>
@@ -140,33 +143,34 @@
                                         <div *ngIf="batchStage >= 3">
                                             <tr>
                                                 <td><b>Departure DateTime: </b></td>
-                                                <td>{{exporterData.departure}}</td>
+                                                <td>{{exporterData.departure}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Destination: </b></td>
-                                                <td>{{exporterData.destination}}</td>
+                                                <td>{{exporterData.destination}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Estimated DateTime: </b></td>
-                                                <td>{{exporterData.dateTime}}</td>
+                                                <td>{{exporterData.dateTime}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Exporter ID: </b></td>
-                                                <td>{{exporterData.exporterID}}</td>
+                                                <td>{{exporterData.exporterID}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Quantity: </b></td>
-                                                <td>{{exporterData.quantity}}</td>
+                                                <td>{{exporterData.quantity}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Ship Name: </b></td>
-                                                <td>{{exporterData.shipName}}</td>
+                                                <td>{{exporterData.shipName}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Ship No: </b></td>
-                                                <td>{{exporterData.shipNo}}</td>
+                                                <td>{{exporterData.shipNo}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                         </div>
+                                        <img src="../../assets/verified.jpg" alt="user-img" style="width:80px;height:80px" class="img-circle pull-right">
                                     </table>  
                                 </div>
                             </div>
@@ -189,38 +193,39 @@
                                         <div *ngIf="batchStage >= 4">
                                             <tr>
                                                 <td><b>Arrival DateTime: </b></td>
-                                                <td>{{importerData.arrivalDateTime}}</td>
+                                                <td>{{importerData.arrivalDateTime}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Importer ID: </b></td>
-                                                <td>{{importerData.destination}}</td>
+                                                <td>{{importerData.destination}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Quantity: </b></td>
-                                                <td>{{importerData.quantity}}</td>
+                                                <td>{{importerData.quantity}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Ship Name: </b></td>
-                                                <td>{{importerData.shipName}}</td>
+                                                <td>{{importerData.shipName}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Ship No: </b></td>
-                                                <td>{{importerData.shipNo}}</td>
+                                                <td>{{importerData.shipNo}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Transport Info: </b></td>
-                                                <td>{{importerData.transportInfo}}</td>
+                                                <td>{{importerData.transportInfo}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Warehouse Address: </b></td>
-                                                <td>{{importerData.warehouseAddress}}</td>
+                                                <td>{{importerData.warehouseAddress}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Warehouse Name: </b></td>
-                                                <td>{{importerData.warehouseName}}</td>
+                                                <td>{{importerData.warehouseName}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             
                                         </div>
+                                        <img src="../../assets/verified.jpg" alt="user-img" style="width:80px;height:80px" class="img-circle pull-right">
                                     </table>
                                 </div>
                             </div>
@@ -243,33 +248,34 @@
                                         <div *ngIf="batchStage >= 5">
                                             <tr>
                                                 <td><b>Internal Batch No: </b></td>
-                                                <td>{{processorData.internalBatchNo}}</td>
+                                                <td>{{processorData.internalBatchNo}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Package Date Time: </b></td>
-                                                <td>{{processorData.packageDateTime}}</td>
+                                                <td>{{processorData.packageDateTime}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Processor Address: </b></td>
-                                                <td>{{processorData.processorAddress}}</td>
+                                                <td>{{processorData.processorAddress}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Processor Name: </b></td>
-                                                <td>{{processorData.processorName}}</td>
+                                                <td>{{processorData.processorName}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Quantity: </b></td>
-                                                <td>{{processorData.quantity}}</td>
+                                                <td>{{processorData.quantity}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Roasting Duration: </b></td>
-                                                <td>{{processorData.rostingDuration}}</td>
+                                                <td>{{processorData.rostingDuration}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Temperature: </b></td>
-                                                <td>{{processorData.temperature}}</td>
+                                                <td>{{processorData.temperature}} <i class="fa fa-check-circle verified_info"></i></td>
                                             </tr>
                                         </div>
+                                        <img src="../../assets/verified.jpg" alt="user-img" style="width:80px;height:80px" class="img-circle pull-right">
                                     </table>
                                 </div>
                             </div>
