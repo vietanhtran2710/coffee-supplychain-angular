@@ -71,7 +71,11 @@
                                 </tr>
                                 <tr *ngFor="let item of batchInfo">
                                     <td>{{item.no}}</td>
-                                    <td>Coming soon</td>
+                                    <td>
+                                        <a href={{item.qrCode}} title={{item.transaction}} class="qr-code-magnify" data-effect="mfp-zoom-in">
+                                            <img src={{item.qrCode}} class="img-responsive" style="width:30px; height:30px;">
+                                        </a>
+                                    </td>
                                     <td *ngIf="item.stage > 0;else not0"><span class="white label label-success font-weight-100">Completed</span></td>
                                     <td *ngIf="item.stage == 0"><span class="white label label-warning font-weight-100">Processing</span> </td>
                                     <td *ngIf="item.stage > 1;else not1"><span class="white label label-success font-weight-100">Completed</span></td>

@@ -80,9 +80,12 @@ export class AdminComponent implements OnInit {
       for (let item of (result as any)) {
         that.coffeeService.getBatchStatus(item.returnValues.batchNo, that.currentAddress)
         .then(function (result) {
+          let transactionUrl = 'https://rinkeby.etherscan.io/tx/' + item.transactionHash;
           let batch = {
             no: item.returnValues.batchNo,
-            stage: that.stageMap.get(result)
+            stage: that.stageMap.get(result),
+            qrCode: 'https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=400x400&chl=' + transactionUrl,
+            transaction: item.transactionHash
           }
           that.batchInfo.push(batch)
         })
