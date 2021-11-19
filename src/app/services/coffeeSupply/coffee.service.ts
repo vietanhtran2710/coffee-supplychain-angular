@@ -19,7 +19,7 @@ export class CoffeeService {
   }
 
   async initWeb3() {
-    this.web3 = await Moralis.enable();
+    this.web3 = await Moralis.enableWeb3();
     this.contract = await new this.web3.eth.Contract(this.contractABI, this.contractAddress);
   }
 
